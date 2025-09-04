@@ -3,17 +3,18 @@ import { TatumSDK, Network } from '@tatumio/tatum';
 import { UtxoWalletProvider } from '@tatumio/utxo-wallet-provider';
 
 const tatum = await TatumSDK.init({
-  // The SDK’s Bitcoin “Getting Started” flow is testnet-oriented.
-  // Use the UTXO wallet provider for BTC-like chains.
+// Initialize the Tatum SDK for Bitcoin Testnet.
+// Testnet avoids spending real BTC while demonstrating wallet features.
   network: Network.BITCOIN_TESTNET,
   configureWalletProviders: [UtxoWalletProvider],
 });
 
-// 24-word seed (store securely!)
+// 24-word seed 
 const mnemonic = tatum.walletProvider.use(UtxoWalletProvider).generateMnemonic();
 
-// Derive xpub and first deposit address (index 0)
 const { xpub } = await tatum.walletProvider.use(UtxoWalletProvider).generateXpub(mnemonic);
+// Derive the first deposit address (index 0)
+// - HD wallet derive addresses by index.
 const addr0 = await tatum.walletProvider.use(UtxoWalletProvider).generateAddressFromMnemonic(mnemonic, 0);
 
 // Derive the private key that controls addr0 (index 0)
