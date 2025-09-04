@@ -16,10 +16,11 @@ This demo shows how to:
 git clone <repo_url>
 cd create-send-btc
 npm install
-Wallet Generation
+
+## Wallet Generation
 
 Run the generator to create addresses & private keys:
-
+```bash
 node generateWallet.js
 
 
