@@ -16,13 +16,13 @@ This demo shows how to:
 git clone <repo_url>
 cd create-send-btc
 npm install
-
+```
 ## Wallet Generation
 
 Run the generator to create addresses & private keys:
 ```bash
 node generateWallet.js
-
+```
 
 This prints:
 
@@ -32,21 +32,22 @@ pk0 (private key for FROM_ADDR)
 
 addr1 (use as TO_ADDR)
 
-Environment Variables
+## Environment Variables
 
 Create a .env file:
-
+```bash
 TATUM_API_KEY=your-key
 FROM_ADDR=addr0
 FROM_PRIV=pk0
 TO_ADDR=addr1
 AMOUNT_BTC=0.00001
 FEE_BTC=0.00002
+```
 
-
-Run Transaction
+## Run Transaction
+```bash
 node sendBtc.js
-
+```
 
 Expected:
 
@@ -58,12 +59,3 @@ Selected UTXOs: [...]
 txHash: <transaction hash>
 
 
-Use a Testnet3 explorer (mempool.space/testnet) to confirm.
-
-Notes
-
-If UTXOs are empty: wait for faucet confirmation.
-
-If fee too low: increase FEE_BTC.
-
-Keys live only in .env.
